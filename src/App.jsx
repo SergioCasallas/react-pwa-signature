@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { registerSW } from 'virtual:pwa-register';
 
 import ReloadPrompt from './components/ReloadPrompt/ReloadPrompt';
+import DrawSignature from './components/DrawSignature/DrawSignature';
+
 import logo from './logo.svg';
 import './App.css';
 
@@ -41,7 +43,7 @@ function App() {
     <>
       <ReloadPrompt />
       <div className='App'>
-        
+        <DrawSignature/>
       </div>
     </>
   );
