@@ -1,0 +1,38 @@
+/* Color palette
+   ============================================ */
+
+$c-bg-page: #000;
+$c-heading: #d8d8d8;
+$c-common-text: #aeaeae;
+$c-bg-common-text: #0a0a0a;
+$c-option-1: #1b60df;
+$c-bg-option-1: #010a1b;
+$c-option-2: #29cac4;
+$c-bg-option-2: #000c0c;
+$c-option-3: #17a7c9;
+$c-bg-option-3: #000e0f;
+
+/* Typography
+   ============================================ */
+
+$primary-font: 'Inter', sans-serif;
+$bold-font: 'Criteria-CF Bold', sans-serif;
+$base-font-size: 16px;
+$base-font-weight: 500;
+$base-line-height: 1.15;
+$text-line-height: 1.75;
+$font-large-scale: $base-font-size * 4;
+$h1-scale: $base-font-size * 3;
+$h2-scale: $base-font-size * 2;
+$h3-scale: $base-font-size * 1.5;
+
+/* 8pt Grid System
+   ============================================ */
+
+$small: 8px;
+$medium-1: 16px;
+$medium-2: 24px;
+$medium-3: 32px;
+$large-1: 40px;
+$large-2: 48px;
+$large-3: 56px;

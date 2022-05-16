@@ -1,5 +1,14 @@
-import React, { useState, useRef } from 'react';
-import { Button, Text } from '@nextui-org/react';
+import React, { useState, useRef, useEffect } from 'react';
+import {
+  Card,
+  Container,
+  Row,
+  Col,
+  Collapse,
+  Spacer,
+  Button,
+  Text,
+} from '@nextui-org/react';
 import SignatureCanvas from 'react-signature-canvas';
 
 import './DrawSignature.css';
@@ -8,51 +17,73 @@ function DrawSignature() {
   const [imagenPorVectores, setImagenPorVectores] = useState('');
 
   const drawRef = useRef();
-  const imagenPorVectoresRef = useRef({});
+  const imagenPorVectoresRef = useRef();
+
+  if (imagenPorVectores)
+    imagenPorVectoresRef.current.fromData(imagenPorVectores);
+
+  useEffect(() => {
+    imagenPorVectoresRef.current.off(true);
+  }, []);
 
   return (
-    <div>
-      <Text h1>Firma</Text>
+    <>
+      <Text
+        h1
+        css={{
+          textGradient: '45deg, $blue600 -20%, $pink600 50%',
+        }}>
+        Firma.js
+      </Text>
+      <Collapse title='Soy una PWA' divider={false}>
+        <Text color='$accents6'>
+          Instalame. Lorem ipsum blah blah blah dolor sit amet, consectetur
+          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </Text>
+      </Collapse>
+      <Button.Group color='secondary' flat>
+        <Button
+          onClick={() => {
+            setImagenPorVectores('');
+            drawRef.current.clear();
+            imagenPorVectoresRef.current.clear();
+          }}>
+          Borrar
+        </Button>
+        <Button
+          onClick={() => {
+            setImagenPorVectores(drawRef.current.toData());
+          }}>
+          Guardar
+        </Button>
+        <Button
+          onClick={() => {
+            imagenPorVectoresRef.current.fromData(imagenPorVectores);
+          }}>
+          Ver Firma
+        </Button>
+      </Button.Group>
+
+      <Spacer />
+
       <SignatureCanvas
         ref={drawRef}
-        penColor='black'
-        backgroundColor='rgba(255,255,255,0.9)'
-        canvasProps={{ width: 500, height: 200, className: '123123' }}
-      />
-      <button
-        onClick={() => {
-          drawRef.current.clear();
-        }}>
-        borrar
-      </button>
-      <button
-        onClick={() => {
+        onEnd={() => {
           setImagenPorVectores(drawRef.current.toData());
-        }}>
-        save
-      </button>
-
-      <button
-        onClick={() => {
           imagenPorVectoresRef.current.fromData(imagenPorVectores);
-        }}>
-        ver firma data
-      </button>
-
-      <Button auto>Borrar</Button>
-      <Button auto>Guardar</Button>
-      <Button auto>Ver fima guardada</Button>
-
-      <div>
-        <SignatureCanvas
-          penColor='black'
-          backgroundColor='rgba(255,255,255,0.9)'
-          canvasProps={{ width: 500, height: 200, className: 'sigCanvas' }}
-          ref={imagenPorVectoresRef}
-          off
-        />
-      </div>
-    </div>
+        }}
+        penColor='black'
+        canvasProps={{ className: 'signature' }}
+      />
+      <SignatureCanvas
+        ref={imagenPorVectoresRef}
+        penColor='black'
+        canvasProps={{ className: 'signature' }}
+        off
+      />
+    </>
   );
 }
 
