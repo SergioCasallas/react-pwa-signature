@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
-import { NextUIProvider } from '@nextui-org/react';
+import React from 'react';
+import { createTheme, NextUIProvider } from '@nextui-org/react';
+// import themeJson from './theme.js';
 
 import ReloadPrompt from './components/ReloadPrompt/ReloadPrompt';
 import DrawSignature from './components/DrawSignature/DrawSignature';
-
 import './App.css';
 
 function App() {
   return (
-    <NextUIProvider>
-      <ReloadPrompt />
-      <div className='App'>
-        <DrawSignature />
-      </div>
-    </NextUIProvider>
+    <>
+      {/* <NextUIProvider theme={createTheme(themeJson)}> */}
+      <NextUIProvider>
+        <ReloadPrompt />
+        <div className='app'>
+          <DrawSignature />
+        </div>
+      </NextUIProvider>
+    </>
   );
 }
 

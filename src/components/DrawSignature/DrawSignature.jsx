@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Button } from '@nextui-org/react';
+import { Button, Text } from '@nextui-org/react';
 import SignatureCanvas from 'react-signature-canvas';
 
 import './DrawSignature.css';
@@ -12,7 +12,7 @@ function DrawSignature() {
 
   return (
     <div>
-      <h1>Firma123123</h1>
+      <Text h1>Firma</Text>
       <SignatureCanvas
         ref={drawRef}
         penColor='black'
@@ -39,9 +39,9 @@ function DrawSignature() {
         ver firma data
       </button>
 
-      <Button>Borrar</Button>
-      <Button>Guardar</Button>
-      <Button>Ver fima guardada</Button>
+      <Button auto>Borrar</Button>
+      <Button auto>Guardar</Button>
+      <Button auto>Ver fima guardada</Button>
 
       <div>
         <SignatureCanvas
